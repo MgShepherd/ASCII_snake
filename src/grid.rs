@@ -2,6 +2,7 @@ use rand::Rng;
 use std::fmt;
 
 use crate::input_handler::Direction;
+use colored::Colorize;
 
 #[derive(PartialEq)]
 struct Position {
@@ -68,11 +69,11 @@ impl fmt::Display for Grid {
         for y in 0..self.height {
             for x in 0..self.width {
                 if y == 0 || y == self.height - 1 || x == 0 || x == self.width - 1 {
-                    write!(f, "#")?;
+                    write!(f, "{}", "#".red())?;
                 } else if self.snake_position == (Position { x, y }) {
-                    write!(f, "■")?;
+                    write!(f, "{}", "■".blue())?;
                 } else if self.apple_position == (Position { x, y }) {
-                    write!(f, "A")?;
+                    write!(f, "{}", "A".green())?;
                 } else {
                     write!(f, " ")?;
                 }
