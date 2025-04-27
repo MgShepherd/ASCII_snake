@@ -1,7 +1,7 @@
 use rand::Rng;
 use std::fmt;
 
-use crate::input_handler::Direction;
+use crate::direction::Direction;
 use colored::Colorize;
 
 #[derive(PartialEq)]

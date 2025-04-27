@@ -1,13 +1,7 @@
 use std::{io::stdin, sync::mpsc::Sender};
 
+use crate::direction::Direction;
 use termion::{event::Key, input::TermRead};
-
-pub enum Direction {
-    Up,
-    Down,
-    Left,
-    Right,
-}
 
 pub enum SnakeEvent {
     Quit,

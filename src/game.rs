@@ -1,6 +1,7 @@
 use crate::{
+    direction::Direction,
     grid::Grid,
-    input_handler::{self, Direction, SnakeEvent},
+    input_handler::{self, SnakeEvent},
 };
 use std::{
     io::stdout,
@@ -54,7 +55,11 @@ fn process_input(reciever: &Receiver<SnakeEvent>, current_direction: &mut Direct
     for recieved in reciever.try_iter() {
         match recieved {
             SnakeEvent::Quit => return true,
-            SnakeEvent::Move(direction) => *current_direction = direction,
+            SnakeEvent::Move(direction) => {
+                if current_direction.is_next_direction_valid(&direction) {
+                    *current_direction = direction;
+                }
+            }
         }
     }
     false
